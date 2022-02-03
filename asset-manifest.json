@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.css": "/panier-achats/static/css/main.31d6cfe0.css",
+    "main.js": "/panier-achats/static/js/main.43615a23.js",
+    "index.html": "/panier-achats/index.html",
+    "main.43615a23.js.map": "/panier-achats/static/js/main.43615a23.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.31d6cfe0.css",
+    "static/js/main.43615a23.js"
+  ]
+}
