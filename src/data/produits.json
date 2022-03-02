@@ -1,0 +1,22 @@
+[
+    {
+        "id": "prd0001",
+        "nom": "Chemise",
+        "prix": "12.99"  
+    },
+    {
+        "id": "prd0002",
+        "nom": "Poutoum",
+        "prix": "15.99"
+    },
+    {
+        "id": "prd0003",
+        "nom": "Chandail",
+        "prix": "13.49"  
+    },
+    {
+        "id": "prd0004",
+        "nom": "Pantalons",
+        "prix": "543534.99"  
+    }
+]
