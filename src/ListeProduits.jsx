@@ -1,19 +1,20 @@
 import './ListeProduits.scss';
 import Produit from './Produit';
-import produits from './data/produits.json';
+import { useState, useEffect } from 'react';
+import { bdFirestore as bd } from './firebase/init';
+import { collection, getDocs } from 'firebase/firestore';
 
 export default function ListeProduits({etatPanier}) {
-    /* 
-        Méthode 1: programmation impérative avec une boucle for 
-    */
-    // let composantsProduits = [];
+    // Variable d'état des produits
+    const [produits, setProduits] = useState([]);
 
-    // // Parcourir le tableau et créer un composant produit pour chaque élément
-    // for (let i = 0; i < produits.length; i++) {
-    //     produits.push(<Produit nom={produits[i].nom} prix={produits[i].prix} pid={produits[i].id}/>);
-    // }
-
-
+    // Obtenir les produits de la collection Firestore
+    useEffect(function() {
+        // Obtenir tous les documents de la collection 'magasin-general-produits'
+        getDocs(collection(bd, 'magasin-general-produits')).then(
+            qs => setProduits(qs.docs.map(doc => ({id: doc.id, ...doc.data()})))
+        );
+    }, []);
 
     return (
         <section className="ListeProduits">
