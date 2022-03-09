@@ -8,6 +8,9 @@ import {useEffect, useState} from 'react';
 import {Routes, Route} from 'react-router-dom';
 
 export default function App() {
+	// État de l'utilisateur connecté
+	const [utilisateur, setUtilisateur] = useState(null); 
+
 	/**
 	 * Opérateur ||
 	 * Retourne la première valeur si elle est vraie
@@ -29,15 +32,29 @@ export default function App() {
 	// Utiliser le HOOK useEffect pour éxecuter ce code de façon contrôlée
 	useEffect(() => window.localStorage.setItem('panier-4pa', JSON.stringify(panier)), [panier]);
 
+	/**
+	 * Déclenche le processus d'authentification avec Google Auth Provider
+	 */
+	function connexion() {
+		
+	}
+
     return (
 		<div className="App">
-			<Entete panier={panier}/>
-			<Routes>
-				<Route path="/" element={<Accueil />} />
-				<Route path="/notre-histoire" element={<Histoire />} />
-				<Route path="/nos-produits" element={<ListeProduits etatPanier={etatPanier}/>} />
-			</Routes>
-			<PiedPage />
+			{
+				utilisateur ?
+				<>
+				<Entete panier={panier}/>
+				<Routes>
+					<Route path="/" element={<Accueil />} />
+					<Route path="/notre-histoire" element={<Histoire />} />
+					<Route path="/nos-produits" element={<ListeProduits etatPanier={etatPanier}/>} />
+				</Routes>
+				<PiedPage />
+				</>
+				:
+				<button onClick={connexion}>Connexion</button>
+			}
 		</div>
     );
 }

@@ -4,7 +4,7 @@ import Badge from '@mui/material/Badge';
 import {NavLink} from 'react-router-dom';
 
 // Déstructuration d'un objet
-export default function Entete({panier}) {
+export default function Entete({panier, utilisateur, setUtilisateur}) {
     // Obtenir les cinq informations importantes pour le sommaire du panier 
     // Lors d'une déstructuration, on peut "renommer" des variables avec :
     const {articlesDifferents: ad, articlesTotaux, sousTotal, taxes, total} = calculerInfoPanier(Object.values(panier));
@@ -20,6 +20,9 @@ export default function Entete({panier}) {
                 <NavLink to="/nos-produits" className={({isActive}) => isActive ? "lien-actif" : ""} >Produits</NavLink>
                 <NavLink to="/notre-histoire" className={({isActive}) => isActive ? "lien-actif" : ""}>Notre histoire</NavLink>
             </nav>
+
+            <div>{utilisateur.displayName}</div>
+            <button>Déconnexion</button>
 
             <nav className="nav-secondaire">
                 <div className="sommaire-panier">
